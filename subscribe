@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe and Redirect</title>
+    <script>
+        let redirectTimeout;
+
+        function startRedirect() {
+            // Start a timer to redirect after a delay
+            redirectTimeout = setTimeout(function() {
+                window.location.href = "https://chat.openai.com"; // Redirect to ChatGPT
+            }, 5000); // 5-second delay
+        }
+
+        function handleSubscribe() {
+            // Simulate user's choice to subscribe
+            startRedirect(); // Start the redirection timer
+            document.getElementById('message').innerText = 'Redirecting you to ChatGPT...';
+        }
+
+        function cancelRedirect() {
+            // Cancel the redirection
+            clearTimeout(redirectTimeout);
+            document.getElementById('message').innerText = 'Redirection canceled. Thank you for your response.';
+        }
+    </script>
+</head>
+<body>
+    <h1>Subscribe to our YouTube Channel</h1>
+    <p>Please click the link below to subscribe:</p>
+    <a href="https://www.youtube.com/@Huskon?sub_confirmation=1" target="_blank" onclick="handleSubscribe()">Yes</a>
+    <button onclick="cancelRedirect()">No</button>
+    <p id="message">You will be redirected shortly after you click Yes...</p>
+</body>
+</html>
+
